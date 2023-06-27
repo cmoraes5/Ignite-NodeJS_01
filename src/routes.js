@@ -1,5 +1,6 @@
 import { Database } from './database.js'
 import { randomUUID } from 'node:crypto'
+import { buildRoutePath } from './utils/build-route-path.js'
 
 // Query Parameters: URL Stateful => Filtros, paginação, não-obrigatórios
 // Route Parameters: Identificação de recurso
@@ -15,7 +16,7 @@ const database = new Database()
 export const Routes = [
     {
         method: 'GET',
-        path: '/users',
+        path: buildRoutePath('/users'),
         handler: (req, res) => {
             const users = database.select('users')
 
@@ -24,7 +25,7 @@ export const Routes = [
     },
     {
         method: 'POST',
-        path: '/users',
+        path: buildRoutePath('/users'),
         handler: (req, res) => {
             const { name, email } =  req.body
 
@@ -41,7 +42,7 @@ export const Routes = [
     },
     {
         method: 'DELETE',
-        path: '/users/ID',
+        path: buildRoutePath('/users/:id'),
         handler: (req, res) => {
             return 
         }
