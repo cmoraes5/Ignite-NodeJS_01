@@ -1,6 +1,15 @@
 import { Database } from './database.js'
 import { randomUUID } from 'node:crypto'
 
+// Query Parameters: URL Stateful => Filtros, paginação, não-obrigatórios
+// Route Parameters: Identificação de recurso
+// Request Body: Envio de informações de um formulário (HTTPs)
+
+// http://localhost:3333/users?userId=1&name=Caio       ==> Query parameter
+// GET http://localhost:3333/users/1                    ==> Route parameter
+
+// POST http://localhost:3333/users                     ==> Request Body = A partir disso crio um usuário passando as informaçoes no corpo da requisição 
+
 const database = new Database()
 
 export const Routes = [
@@ -30,4 +39,11 @@ export const Routes = [
             return res.writeHead(201).end()
         }
     },
+    {
+        method: 'DELETE',
+        path: '/users/ID',
+        handler: (req, res) => {
+            return 
+        }
+    }
 ]
